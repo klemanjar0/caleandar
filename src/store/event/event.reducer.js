@@ -3,16 +3,20 @@ const localState = JSON.parse(localStorage.getItem('store')) || {};
 
 const INITIAL_STATE = localState.eventReducer || {
   events: [],
-  isLoading: false
+  isLoading: false,
+  error: undefined,
 };
 
 const eventReducer = createSlice({
   name: 'eventReducer',
   INITIAL_STATE,
   reducers: {
-    createEvent(currentState) {
+    createEvent(currentState, { payload }) {
       return {...currentState, events: [...currentState.events, payload.events]};
     },
+    deleteEvent(currentState, { payload }) {
+      return {...currentState, events: [...currentState.events, payload.events]};
+    }
   },
 })
 
