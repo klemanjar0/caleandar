@@ -12,13 +12,20 @@ const eventReducer = createSlice({
   INITIAL_STATE,
   reducers: {
     createEvent(currentState, { payload }) {
-      return {...currentState, events: [...currentState.events, payload.events]};
+      return {...currentState, events: [payload.events]};
     },
     deleteEvent(currentState, { payload }) {
-      return {...currentState, events: [...currentState.events, payload.events]};
-    }
+      return {...currentState, events: [payload.events]};
+    },
+    editEvent(currentState, { payload }) {
+      return {...currentState, events: [payload.events]};
+    },
+    default(currentState){
+      return currentState;
+    },
+
   },
 })
 
-export const { createEvent, } = eventReducer.actions
+export const { createEvent, deleteEvent } = eventReducer.actions
 export default eventReducer.reducer
